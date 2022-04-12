@@ -9,9 +9,9 @@ default value to be "text" and return the input element inside label. (create it
 
 function createInputElm(label,type="text"){
   let labelTag = document.createElement('label')
+  labelTag.innerText=label;
   let inputTag = document.createElement('input')
-  inputTag.type = type;
-  labelTag.innerText = label;
+  inputTag.type=type
   labelTag.append(inputTag);
   return labelTag;
 }
@@ -26,9 +26,13 @@ createInputElm('Your age', 'number'); //<label>Your age: <input type="number"></
 // Your code goes here
 
 function createInputElmByString(label,type="text"){
-  let string = `<label>${label}: <input type=${type}></label>`
-  return string;
-}
+ let label= document.createElement("label")
+ label.innerText=label;
+ let input=document.createElement("input")
+ input.type=type;
+ label.append(input);
+ return label;
+};
 
 
 // TEST
@@ -39,36 +43,24 @@ createInputElm('Your age', 'number'); //<label>Your age: <input type="number"></
 // the html for the link like <ul> <li>Mango</li>  <li>Apple</li>  <li>Banana</li> </ul>
 // Your code goes here
 
-
-function createList(array){
-  let ul = document.createElement('ul')
-  let liOne = document.createElement('li')
-  liOne.append(array[0])
-  let liTwo = document.createElement('li')
-  liTwo.append(array[1])
-  let liThree = document.createElement('li')
-  liThree.append(array[2])
-  let liFour = document.createElement('li')
-  liFour.append(array[3])
-  
-  ul.append(liOne,liTwo,liThree,liFour)
+function createList(array) {
+  let ul = document.createElement('ul');
+  array.forEach(elm => {
+    let li = document.createElement('li');
+    li.innerText = elm
+    ul.append(li);
+  });
   return ul;
-}
+};
 
-
-function createList1(array){
-  let html = `<ul>
-    ${array.map((elm) => `<li>${elm}</li>`).join("")}
-  </ul>`; 
-  return html;
-}
 
 
 // TEST
 createList(['ALABAMA', 'ALASKA', 'HAWAII', 'KENTUCKY']);
 createList(['Afghanistan', 'Antarctica', 'Congo', 'Estonia']);
 
-// 4. Create a function named `createTodoList` that accept and array of data like [{name: "Learn DOM", isDone: false}, {name: "Learn JS", isDone: true}] and returns
+// 4. Create a function named `createTodoList` that accept and array of data like 
+// [{name: "Learn DOM", isDone: false}, {name: "Learn JS", isDone: true}] and returns
 // the html for single todo will look like given below
 /* 
 <ul>
@@ -81,21 +73,21 @@ createList(['Afghanistan', 'Antarctica', 'Congo', 'Estonia']);
 */
 
 // Your code goes here
-
-
-function createTodoList(data=[]){
-  let html =`<ul>
-  ${data.map(todo=>
-  `<li>
-    <p>${todo.name}</p>
-    <input type="checkbox" ${todo.isDone} ? "checked" : ""}name="" id="">
-    <span>X</span>
-  </li>`).join("")}
-</ul>`;
-return html;
-};
-
-
+function createTodoList(arr){
+  let ul = document.createElement('ul');
+  let li = document.createElement('li');
+  let p = document.createElement('p');
+    p.innerText = "Learn Dom";
+  let input = document.createElement('input');
+input.type = "text";
+  input.name =" ";
+  input.id =" ";
+ let span = document.createElement('span');
+    span.innerText = "Rohit Bhatt"
+  li.append(p,input,span);
+    ul.append(li);
+  return ul; 
+  };
 
 // TEST
 createTodoList([
