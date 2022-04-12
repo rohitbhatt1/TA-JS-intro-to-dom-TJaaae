@@ -73,21 +73,22 @@ createList(['Afghanistan', 'Antarctica', 'Congo', 'Estonia']);
 */
 
 // Your code goes here
+
+
 function createTodoList(arr){
   let ul = document.createElement('ul');
   let li = document.createElement('li');
   let p = document.createElement('p');
-    p.innerText = "Learn Dom";
   let input = document.createElement('input');
 input.type = "text";
   input.name =" ";
   input.id =" ";
  let span = document.createElement('span');
     span.innerText = "Rohit Bhatt"
-  li.append(p,input,span);
-    ul.append(li);
+  ul.append(li,p,input,span);
   return ul; 
-  };
+  }
+
 
 // TEST
 createTodoList([
