@@ -1,4 +1,4 @@
-{
+let allbooks = {
     books: [
       {
         isbn: "9781593275846",
@@ -114,26 +114,32 @@
           "A JavaScript pattern and antipattern collection that covers function patterns, jQuery patterns, jQuery plugin patterns, design patterns, general patterns, literals and constructor patterns, object creation patterns, code reuse patterns, DOM and browser patterns",
         website: "https://shichuan.github.io/javascript-patterns/",
       },
-    ]
+    ],
   };
-  let cardContainer = document.querySelector('.card-container');
-  data.books.forEach(book=>{
-    let card = document.createElement('div');
-    card.classList.add('card');
-    cardContainer.append(card);
-    let img = document.createElement('img');
-    img.src =book.image;
-    card.append(img);
-    let bookTitle = document.createElement('h2');
-    bookTitle.innerText = book.title;
-    card.append(bookTitle);
-    let bookAuthor = document.createElement('a');
-    bookAuthor.classList.add('authorName');
-    bookAuthor.innerText = book.author;
-    card.append(bookAuthor);
-    let btn = document.createElement('a');
-    btn.classList.add('card-btn');
-    btn.innerText = "Click Me";
-    card.append(btn);
-    cardContainer.append(card);
+
+  let ul = document.querySelector(".container")      
+
+
+  allbooks.books.forEach((val) => {
+      let li = document.createElement('li')
+      let img = document.createElement('img')
+      let h2 = document.createElement('h2')
+      let p = document.createElement('p')
+      let span = document.createElement('span')
+      let button = document.createElement('button')
+      
+      img.src = val.image;
+      img.alt = val.title;
+      h2.innerText = val.title;
+      p.innerText = 'Author:';
+      button.innerText = 'Buy Now'
+  
+      let authorName = document.createTextNode(val.author);
+      span.append(authorName)
+      p.append(span)
+  
+      li.append(img,h2,p,button)
+  
+      
+      ul.append(li)
   });
